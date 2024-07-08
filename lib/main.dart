@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http_requests/api/articles_api.dart';
+import 'package:http_requests/core/server_connector.dart';
 import 'package:http_requests/model/article_model.dart';
 
 import 'api/users_api.dart';
@@ -97,6 +98,12 @@ class _MainAppState extends State<MainApp> {
         );
       },
     );
+  }
+
+  @override
+  void dispose() {
+    ServerConnector.client.close();
+    super.dispose();
   }
 }
 
